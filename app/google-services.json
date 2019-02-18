@@ -1,0 +1,146 @@
+{
+  "project_info": {
+    "project_number": "971288364554",
+    "firebase_url": "https://flinder-7bcd9.firebaseio.com",
+    "project_id": "flinder-7bcd9",
+    "storage_bucket": "flinder-7bcd9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971288364554:android:bfbe3108020cf9cb",
+        "android_client_info": {
+          "package_name": "com.clasemanel.flinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971288364554-obpo9psr91a0tsu7mnn7l81ngob3rpd9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt-iEqzwReaGkaR8dDUM57qdka-S3rdRM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971288364554:android:e4e52cdef7c2a5f7",
+        "android_client_info": {
+          "package_name": "com.l.marc.tinderpi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971288364554-v0q2emp12b1ff6lr3tgeh5j7b0cdrc9o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.l.marc.tinderpi",
+            "certificate_hash": "34b9c9d9c77e29e6f903704536d659410fcc08fa"
+          }
+        },
+        {
+          "client_id": "971288364554-3f5q0pfu3jvlrk94f9ehv45j70flj922.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.l.marc.tinderpi",
+            "certificate_hash": "c3e54dc1508e01eda07c9afebc19f125abaeb33b"
+          }
+        },
+        {
+          "client_id": "971288364554-stigenvu87m3037mkg1gi7i9np1kv5tj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.l.marc.tinderpi",
+            "certificate_hash": "ceea85cb82688dc3891e8e4e9b10b8d6f6d5c7f3"
+          }
+        },
+        {
+          "client_id": "971288364554-obpo9psr91a0tsu7mnn7l81ngob3rpd9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt-iEqzwReaGkaR8dDUM57qdka-S3rdRM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971288364554-obpo9psr91a0tsu7mnn7l81ngob3rpd9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971288364554:android:8912b93a60a7a9a1",
+        "android_client_info": {
+          "package_name": "prueba.prueba.crgomez.prueba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971288364554-ao915360f0lt6ai9kcv7eb10f3mbdk0c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "prueba.prueba.crgomez.prueba",
+            "certificate_hash": "34b9c9d9c77e29e6f903704536d659410fcc08fa"
+          }
+        },
+        {
+          "client_id": "971288364554-obpo9psr91a0tsu7mnn7l81ngob3rpd9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt-iEqzwReaGkaR8dDUM57qdka-S3rdRM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971288364554-obpo9psr91a0tsu7mnn7l81ngob3rpd9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

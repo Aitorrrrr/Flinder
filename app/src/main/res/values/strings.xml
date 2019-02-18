@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TinderPI</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="perfil">PERFIL</string>
+    <string name="cartas">CARTAS</string>
+    <string name="chat">CHAT</string>
+    <string name="btnAjus">AJUSTES</string>
+    <string name="btnPerfil">PERFIL</string>
+</resources>
