@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.clasemanel.flinder.CartaCentro.CartaTab;
 import com.clasemanel.flinder.Chat.ChatTab;
 import com.clasemanel.flinder.Perfil.PerfilTab;
 
@@ -22,9 +23,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 PerfilTab tab1 = new PerfilTab();
                 return tab1;
-            /*case 1:
-                CartasFragmentTab cart1 = new CartasFragmentTab();
-                return cart1; */
+            case 1:
+                CartaTab cart1 = new CartaTab();
+                return cart1;
             case 2:
                 ChatTab chatTab1 = new ChatTab();
                 return chatTab1;

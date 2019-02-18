@@ -10,8 +10,8 @@ public class ChatPicker {
 
     }
 
-    public ChatPicker(String nombreUser) {
-        this.nombreUser = nombreUser;
+    public ChatPicker(String id) {
+        this.id = id;
     }
 
     public ChatPicker(String nombreUser, String id) {

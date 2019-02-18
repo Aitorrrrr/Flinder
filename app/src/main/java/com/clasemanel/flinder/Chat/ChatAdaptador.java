@@ -1,6 +1,5 @@
 package com.clasemanel.flinder.Chat;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,18 +25,12 @@ public class ChatAdaptador extends RecyclerView.Adapter<ChatAdaptador.ChatPicker
         public TextView ultimMensaje;
         public ImageView imagen;
 
-        public Context context;
-        public View v;
-
         public ChatPickerViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nombre=(TextView)itemView.findViewById(R.id.lbl_nombre_chatPicker);
             ultimMensaje = (TextView) itemView.findViewById(R.id.lbl_mensaje_chatPicker);
             imagen = (ImageView) itemView.findViewById(R.id.img_imagenUser_chatPicker);
-
-            v = itemView;
-            context = itemView.getContext();
         }
 
         @Override
@@ -49,7 +42,7 @@ public class ChatAdaptador extends RecyclerView.Adapter<ChatAdaptador.ChatPicker
     public ChatAdaptador(ArrayList<ChatPicker> array)
     {
         this.arrayChats = array;
-        Log.d("MIO",arrayChats.size()+"");
+        Log.d("MIO",arrayChats.size()+" en el adaptador");
     }
 
     @NonNull
@@ -63,11 +56,12 @@ public class ChatAdaptador extends RecyclerView.Adapter<ChatAdaptador.ChatPicker
 
     @Override
     public void onBindViewHolder(@NonNull ChatPickerViewHolder chatPickerViewHolder, int i) {
-        chatPickerViewHolder.nombre.setText(arrayChats.get(i).getNombreUser());
+        chatPickerViewHolder.nombre.setText(arrayChats.get(i).getId());
     }
 
     @Override
     public int getItemCount() {
+        Log.d("MIO",arrayChats.size()+" en el getCount");
         return arrayChats.size();
     }
 }

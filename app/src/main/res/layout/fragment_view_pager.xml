@@ -23,7 +23,7 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
 
-        <com.l.marc.tinderpi.NoSwipeViewPager
+        <com.clasemanel.flinder.ViewPager.NoSwipeViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"

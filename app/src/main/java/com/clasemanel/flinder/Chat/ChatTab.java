@@ -84,6 +84,10 @@ public class ChatTab extends Fragment {
         View v = inflater.inflate(R.layout.fragment_chat_tab, container, false);
         viewAux = inflater.inflate(R.layout.fragment_chat_tab, container, false);
 
+        rc = (RecyclerView) v.findViewById(R.id.recycler_chats_chatTab);
+        rvLM = new LinearLayoutManager(v.getContext());
+        rc.setLayoutManager(rvLM);
+
         arrayChatPicker = new ArrayList<>();
 
         mAuth = FirebaseAuth.getInstance();
@@ -101,7 +105,7 @@ public class ChatTab extends Fragment {
                     {
                         Log.d("MIO","2 hijos");
                         Log.d("MIO",match.child("idDelUser").getValue().toString());
-                        cpm = new ChatPicker(match.child("idDelUser").getValue().toString());
+                        cpm = new ChatPicker(match.child("idDelUser").getValue().toString(),"algo","Algo mas");
                         arrayChatPicker.add(cpm);
                         Log.d("MIO",""+arrayChatPicker.size());
                     }
@@ -126,10 +130,6 @@ public class ChatTab extends Fragment {
 
     public void iniciarRecycler()
     {
-        rc = (RecyclerView) viewAux.findViewById(R.id.recycler_chats_chatTab);
-        rvLM = new LinearLayoutManager(viewAux.getContext());
-        rc.setLayoutManager(rvLM);
-
         adaptadorRecycler = new ChatAdaptador(arrayChatPicker);
         rc.setAdapter(adaptadorRecycler);
     }
