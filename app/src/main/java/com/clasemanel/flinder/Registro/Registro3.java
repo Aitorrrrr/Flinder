@@ -125,6 +125,8 @@ public class Registro3 extends Fragment implements View.OnClickListener {
                 public void onClick(DialogInterface dialog, int item) {
 
                     resultadoBuscar.setText(items[item]);
+                    Usuario p=new Usuario();
+                    p.setPreferenciasSexuales(resultadoBuscar.getText().toString());
                     dialog.dismiss();
 
                 }
