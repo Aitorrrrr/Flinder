@@ -166,8 +166,6 @@ public class Registro1 extends Fragment implements View.OnClickListener {
 
         if (okNombre && okContrasenya && okEmail)
         {
-            Toast.makeText(getContext(), "Todo ok", Toast.LENGTH_LONG).show();
-
             Usuario userAux = new Usuario();
             String nom=nombreUsuario.getText().toString();
             userAux.setNombreUsuario(nom);

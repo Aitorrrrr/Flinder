@@ -102,8 +102,6 @@ public class Registro2 extends Fragment implements View.OnClickListener {
         siguiente2=v.findViewById(R.id.btn_siguiente_reg2);
         siguiente2.setOnClickListener(this);
 
-        errorImageView=v.findViewById(R.id.imageviewerror);
-
         nombreRegistro=v.findViewById(R.id.et_nombre_reg2);
         apellidosRegistro=v.findViewById(R.id.et_apellidos_reg2);
         return v;
@@ -196,7 +194,7 @@ public class Registro2 extends Fragment implements View.OnClickListener {
             });*/
 
             // builder.show();
-
+            cambiarmensajeBoton();
         }
 
         if (v.getId()==R.id.btn_siguiente_reg2){

@@ -1,60 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".LogIn.LoginFragment">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/background">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".loginFragment">
+        android:layout_height="wrap_content"
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
 
-
-        <TextView
-            android:id="@+id/lbl_titulo_logIn"
+        <ImageView android:src="@drawable/logo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="116dp"
-            android:text="Sup Nigga!!"
-            android:textSize="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="72dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center_horizontal" />
 
-        <EditText
-            android:id="@+id/et_email_logIn"
-            android:layout_width="wrap_content"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="85dp"
-            android:layout_marginTop="67dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_titulo_logIn" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
 
-        <EditText
-            android:id="@+id/et_password_logIn"
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FLINDER"
+                android:textSize="76px"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="#ffff"
+                android:textColorHint="#fff"/>
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="85dp"
-            android:layout_marginTop="36dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_email_logIn" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColorHint="#fff"
+            android:textColor="#ffff">
 
-        <Button
+            <EditText
+                android:textColorHint="#fff"
+                android:textColor="#ffff"
+                android:id="@+id/et_email_logIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Password Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColorHint="#fff"
+            android:textColor="#ffff">
+
+            <EditText
+                android:textColorHint="#fff"
+                android:textColor="#ffff"
+                android:id="@+id/et_password_logIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_entrar_logIn"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="160dp"
-            android:layout_marginTop="85dp"
-            android:text="Button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_password_logIn" />
-    </android.support.constraint.ConstraintLayout>
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:text="Entrar" />
 
-</FrameLayout>
+        <TextView android:id="@+id/tv_registrar_logIn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="No tienes una cuenta, Create una!"
+            android:gravity="center"
+            android:textSize="16dip"
+            android:textColorHint="#fff"
+            android:textColor="#ffff"/>
+
+    </LinearLayout>
+</ScrollView>

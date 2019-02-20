@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.clasemanel.flinder.NavigationHost;
 import com.clasemanel.flinder.R;
+import com.clasemanel.flinder.Registro.Registro1;
 import com.clasemanel.flinder.ViewPager.ViewPagerFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,9 +30,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private Button entrar;
     private EditText email;
     private EditText pass;
-
+    private TextView regis;
 
     private ViewPagerFragment viewPagerFragment;
+    private Registro1 registro1;
 
     public LoginFragment() {
 
@@ -50,7 +53,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         entrar=v.findViewById(R.id.btn_entrar_logIn);
         email=v.findViewById(R.id.et_email_logIn);
         pass=v.findViewById(R.id.et_password_logIn);
+        regis=v.findViewById(R.id.tv_registrar_logIn);
 
+        regis.setOnClickListener(this);
         entrar.setOnClickListener(this);
 
         return v;
@@ -66,8 +71,15 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         if (v.getId()==R.id.btn_entrar_logIn){
             entrar();
         }
+        if (v.getId()==R.id.tv_registrar_logIn){
+            registro();
+        }
     }
+private void registro(){
 
+     registro1= new Registro1();
+    ((NavigationHost) getActivity()).navigateTo(registro1,true);
+}
     public void entrar(){
 
         mAuth.signInWithEmailAndPassword(email.getText().toString(), pass.getText().toString())

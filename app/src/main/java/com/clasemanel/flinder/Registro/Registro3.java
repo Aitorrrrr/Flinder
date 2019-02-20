@@ -97,8 +97,7 @@ public class Registro3 extends Fragment implements View.OnClickListener {
         View v= inflater.inflate(R.layout.fragment_registro3, container, false);
         resultadoBuscar=v.findViewById(R.id.et_queBuscas_reg3);
         resultadoBuscar.setOnClickListener(this);
-        resultado = v.findViewById(R.id.lbl_resultado_reg3);
-        resultado.setText(userAux.getNombre()+", "+userAux.getLocalidad()+", "+userAux.getNombreUsuario()+", "+userAux.getPreferenciasSexuales());
+
         siguiente=v.findViewById(R.id.btn_aceptar_reg3);
         siguiente.setOnClickListener(this);
 
