@@ -3,82 +3,24 @@ package com.clasemanel.flinder.Modelo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 public class Imagenes implements Parcelable {
 
-    private String imagen1;
-    private String imagen2;
-    private String imagen3;
-    private String imagen4;
-    private String imagen5;
-    private String imagen6;
+    private ArrayList<String> imagenes;
 
-    public Imagenes(){
-
-    }
-    public Imagenes(String imagen1, String imagen2, String imagen3, String imagen4, String imagen5, String imagen6) {
-        this.imagen1 = imagen1;
-        this.imagen2 = imagen2;
-        this.imagen3 = imagen3;
-        this.imagen4 = imagen4;
-        this.imagen5 = imagen5;
-        this.imagen6 = imagen6;
-    }
-
-    public String getImagen1() {
-        return imagen1;
-    }
-
-    public void setImagen1(String imagen1) {
-        this.imagen1 = imagen1;
-    }
-
-    public String getImagen2() {
-        return imagen2;
-    }
-
-    public void setImagen2(String imagen2) {
-        this.imagen2 = imagen2;
-    }
-
-    public String getImagen3() {
-        return imagen3;
-    }
-
-    public void setImagen3(String imagen3) {
-        this.imagen3 = imagen3;
-    }
-
-    public String getImagen4() {
-        return imagen4;
-    }
-
-    public void setImagen4(String imagen4) {
-        this.imagen4 = imagen4;
-    }
-
-    public String getImagen5() {
-        return imagen5;
-    }
-
-    public void setImagen5(String imagen5) {
-        this.imagen5 = imagen5;
-    }
-
-    public String getImagen6() {
-        return imagen6;
-    }
-
-    public void setImagen6(String imagen6) {
-        this.imagen6 = imagen6;
+    public Imagenes()
+    {
+        this.imagenes = new ArrayList<String>();
     }
 
     protected Imagenes(Parcel in) {
-        imagen1 = in.readString();
-        imagen2 = in.readString();
-        imagen3 = in.readString();
-        imagen4 = in.readString();
-        imagen5 = in.readString();
-        imagen6 = in.readString();
+        if (in.readByte() == 0x01) {
+            imagenes = new ArrayList<String>();
+            in.readList(imagenes, String.class.getClassLoader());
+        } else {
+            imagenes = null;
+        }
     }
 
     @Override
@@ -88,12 +30,12 @@ public class Imagenes implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(imagen1);
-        dest.writeString(imagen2);
-        dest.writeString(imagen3);
-        dest.writeString(imagen4);
-        dest.writeString(imagen5);
-        dest.writeString(imagen6);
+        if (imagenes == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeList(imagenes);
+        }
     }
 
     @SuppressWarnings("unused")
@@ -108,4 +50,19 @@ public class Imagenes implements Parcelable {
             return new Imagenes[size];
         }
     };
+
+    public void anyadirImagen(String imagen)
+    {
+        imagenes.add(imagen);
+    }
+
+    public String recuperarImagen(int posicion)
+    {
+        return imagenes.get(posicion);
+    }
+
+    public int getSize()
+    {
+        return this.imagenes.size();
+    }
 }

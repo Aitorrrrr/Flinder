@@ -1,6 +1,7 @@
 package com.clasemanel.flinder.Registro;
 
 import android.app.AlertDialog;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,8 +22,11 @@ import com.clasemanel.flinder.LogIn.LoginFragment;
 import com.clasemanel.flinder.Modelo.Imagenes;
 import com.clasemanel.flinder.Modelo.Usuario;
 import com.clasemanel.flinder.NavigationHost;
+import com.clasemanel.flinder.Perfil.EditarPerfil;
+import com.clasemanel.flinder.Perfil.Fotos;
 import com.clasemanel.flinder.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -40,24 +45,26 @@ public class Registro3 extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM2 = "param2";
 
     private LoginFragment login;
-    private EditText resultadoBuscar;
-    private Usuario userAux;
-    private TextView resultado;
-    private Button siguiente;
-    private String ur;
-    private UploadTask uploadTask;
+    EditText resultadoBuscar;
+    Usuario personas;
+    TextView resultado;
+    Button siguiente;
+    String url;
+    UploadTask uploadTask;
     private DatabaseReference bbdd;
     private Imagenes imag;
 
-
-    FirebaseStorage storage = FirebaseStorage.getInstance();
-    StorageReference storageRef = storage.getReferenceFromUrl("gs://flinder-7bcd9.appspot.com");
+    FirebaseStorage storage;
+    StorageReference storageRef;
+    DatabaseReference databaseReference;
 
     private Context mainContext;
 
-    //subida
+    private Fotos fragFotos;
+
     private FirebaseAuth mAuth;
 
+    Uri mImageUri;
 
     public Registro3() {
     }
@@ -68,12 +75,6 @@ public class Registro3 extends Fragment implements View.OnClickListener {
         args.putParcelable(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2,ur);
 
-        // ByteArrayOutputStream streamArray = new ByteArrayOutputStream();
-        //imagen.compress(Bitmap.CompressFormat.JPEG,100,streamArray);
-        // byte[] bytesImagen = streamArray.toByteArray();
-
-        //  args.putByteArray(ARG_PARAM2,bytesImagen);
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -82,11 +83,8 @@ public class Registro3 extends Fragment implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            userAux = getArguments().getParcelable(ARG_PARAM1);
-            ur = getArguments().getString(ARG_PARAM2);
-
-            imag = new Imagenes();
-
+            personas = getArguments().getParcelable(ARG_PARAM1);
+            url = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -95,9 +93,17 @@ public class Registro3 extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_registro3, container, false);
+        imag = new Imagenes();
+        mImageUri = Uri.parse(url);
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReferenceFromUrl("gs://flinder-7bcd9.appspot.com");
+
+
+        databaseReference =  FirebaseDatabase.getInstance().getReference();
+
+
         resultadoBuscar=v.findViewById(R.id.et_queBuscas_reg3);
         resultadoBuscar.setOnClickListener(this);
-
         siguiente=v.findViewById(R.id.btn_aceptar_reg3);
         siguiente.setOnClickListener(this);
 
@@ -105,6 +111,8 @@ public class Registro3 extends Fragment implements View.OnClickListener {
 
         mAuth = FirebaseAuth.getInstance();
         bbdd = FirebaseDatabase.getInstance().getReference("Usuarios");
+
+
         return v;
     }
 
@@ -125,8 +133,6 @@ public class Registro3 extends Fragment implements View.OnClickListener {
                 public void onClick(DialogInterface dialog, int item) {
 
                     resultadoBuscar.setText(items[item]);
-                    Usuario p=new Usuario();
-                    p.setPreferenciasSexuales(resultadoBuscar.getText().toString());
                     dialog.dismiss();
 
                 }
@@ -136,24 +142,8 @@ public class Registro3 extends Fragment implements View.OnClickListener {
 
         if (v.getId()==R.id.btn_aceptar_reg3){
             if (comprobar()){
-                if(ur != null) {
-
-
-                    StorageReference childRef = storageRef.child("prueba2/image.jpg");
-                    //uploading the image
-                    uploadTask = childRef.putFile(Uri.parse(ur));
-                    imag.setImagen1(ur);
-
-                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                            Toast.makeText(getContext(), "Subida exitosamente", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
                 conexion();
-                login = new LoginFragment();
+                login=new LoginFragment();
                 ((NavigationHost) getActivity()).navigateTo(login,false);
 
             }
@@ -189,7 +179,7 @@ public class Registro3 extends Fragment implements View.OnClickListener {
     }
 
     private void  conexion(){
-        mAuth.createUserWithEmailAndPassword(userAux.getEmail(), userAux.getPass())
+        mAuth.createUserWithEmailAndPassword(personas.getEmail(), personas.getPass())
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -198,15 +188,14 @@ public class Registro3 extends Fragment implements View.OnClickListener {
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             String uid = user.getUid();
-                            agregarDatos(userAux,uid);
-                            agregarFotos(imag,uid);
+                            agregarDatos(personas, uid);
+                            uploadFile(imag, uid);
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             updateUI(null);
                         }
-
-                        // ...
                     }
                 });
     }
@@ -216,8 +205,27 @@ public class Registro3 extends Fragment implements View.OnClickListener {
         bbdd.child(uid).setValue(p);
     }
 
-    private void agregarFotos(Imagenes i,String uid){
+    private void uploadFile(final Imagenes imag, final String uid) {
+        if (mImageUri != null) {
+            final String ahora = ""+System.currentTimeMillis();
+            String rutaImagen = "prueba2/"+ahora;
+            final StorageReference fileReference = storageRef.child(rutaImagen);
 
-        bbdd.child(uid).child("imagenes").setValue(i);
+            uploadTask = (UploadTask) fileReference.putFile(mImageUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            bbdd.child(uid).child("imagenes").child("img1").child("nombre").setValue(ahora);
+                            Toast.makeText(getContext(), "Upload successful", Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
 }
+

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.clasemanel.flinder.NavigationHost;
+import com.clasemanel.flinder.Perfil.Preferencias;
 import com.clasemanel.flinder.R;
 import com.clasemanel.flinder.Registro.Registro1;
 import com.clasemanel.flinder.ViewPager.ViewPagerFragment;
@@ -34,7 +35,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     private ViewPagerFragment viewPagerFragment;
     private Registro1 registro1;
-
     public LoginFragment() {
 
     }
@@ -76,8 +76,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         }
     }
 private void registro(){
-
-     registro1= new Registro1();
+    registro1 = new Registro1();
     ((NavigationHost) getActivity()).navigateTo(registro1,true);
 }
     public void entrar(){
@@ -99,8 +98,6 @@ private void registro(){
                             Toast.makeText(getActivity(), "Vuelve a comprobar el email y" +
                                     " la contraseña introducidos.", Toast.LENGTH_SHORT).show();
                         }
-
-                        // ...
                     }
                 });
     }

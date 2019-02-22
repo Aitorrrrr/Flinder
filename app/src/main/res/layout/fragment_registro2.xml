@@ -53,13 +53,14 @@
                     android:layout_width="120dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="24dp"
+                    android:layout_marginBottom="16dp"
                     android:src="@drawable/fotaca" />
 
                 <android.support.v7.widget.AppCompatButton
                     android:id="@+id/btn_foto_reg2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
                     android:text="Subir Foto" />
             </LinearLayout>
 
@@ -79,13 +80,13 @@
                     android:textColor="#ffff">
 
                     <EditText
-                        android:textColorHint="#fff"
-                        android:textColor="#ffff"
                         android:id="@+id/et_nombre_reg2"
                         android:layout_width="190dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="50dp"
-                        android:hint="Nombre" />
+                        android:hint="Nombre"
+                        android:textColor="#ffff"
+                        android:textColorHint="#fff" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -98,13 +99,13 @@
                     android:textColor="#ffff">
 
                     <EditText
-                        android:textColorHint="#fff"
-                        android:textColor="#ffff"
                         android:id="@+id/et_apellidos_reg2"
                         android:layout_width="190dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="50dp"
-                        android:hint="Apellidos" />
+                        android:hint="Apellidos"
+                        android:textColor="#ffff"
+                        android:textColorHint="#fff" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
 
@@ -128,13 +129,12 @@
                 android:text="Localidad:" />
 
             <Spinner
-                android:textColorHint="#fff"
-                android:textColor="#ffff"
                 android:id="@+id/spinner_provincias_reg2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="100dp">
-            </Spinner>
+                android:layout_marginStart="100dp"
+                android:textColor="#ffff"
+                android:textColorHint="#fff"></Spinner>
 
         </LinearLayout>
 
@@ -201,15 +201,15 @@
                     android:textColor="#ffff">
 
                     <EditText
-                        android:textColorHint="#fff"
-                        android:textColor="#ffff"
                         android:id="@+id/et_fechaSelector_reg2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        android:textColor="#ffff"
+                        android:textColorHint="#fff" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -218,24 +218,25 @@
                     android:layout_marginBottom="120dp">
 
                     <EditText
-                        android:textColorHint="#fff"
-                        android:textColor="#ffff"
                         android:id="@+id/et_generoSel_reg2"
                         android:layout_width="match_parent"
                         android:layout_height="71dp"
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        android:textColor="#ffff"
+                        android:textColorHint="#fff" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
         </LinearLayout>
+
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_siguiente_reg2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="30dp"
             android:padding="12dp"
             android:text="Siguiente" />
 

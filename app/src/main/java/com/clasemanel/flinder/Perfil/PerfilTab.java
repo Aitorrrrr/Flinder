@@ -10,9 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.clasemanel.flinder.NavigationHost;
 import com.clasemanel.flinder.R;
 
-public class PerfilTab extends Fragment {
+public class PerfilTab extends Fragment implements View.OnClickListener {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -21,6 +22,12 @@ public class PerfilTab extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private Button editar;
+    private Button prefs;
+
+    private Preferencias preferencias;
+    private EditarPerfil editarPerfil;
 
     public PerfilTab()
     {
@@ -55,6 +62,11 @@ public class PerfilTab extends Fragment {
         btnAjustes = (Button) v.findViewById(R.id.btn_ajustes_perfilTab);
         btnPerfil = (Button) v.findViewById(R.id.btn_perfil_perfilTab);
 
+        editar = (Button) v.findViewById(R.id.btn_perfil_perfilTab);
+        editar.setOnClickListener(this);
+        prefs = (Button) v.findViewById(R.id.btn_ajustes_perfilTab);
+        prefs.setOnClickListener(this);
+
         return v;
     }
 
@@ -68,5 +80,20 @@ public class PerfilTab extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId()==R.id.btn_ajustes_perfilTab)
+        {
+            preferencias = new Preferencias();
+            ((NavigationHost) getActivity()).navigateTo(preferencias,false);
+        }
+
+        if (v.getId()==R.id.btn_perfil_perfilTab)
+        {
+            editarPerfil = new EditarPerfil();
+            ((NavigationHost) getActivity()).navigateTo(editarPerfil,false);
+        }
     }
 }

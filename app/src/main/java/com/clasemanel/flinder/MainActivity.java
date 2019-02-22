@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.clasemanel.flinder.LogIn.LoginFragment;
+import com.clasemanel.flinder.Perfil.EditarPerfil;
+
 import com.clasemanel.flinder.ViewPager.ViewPagerAdapter;
 import com.clasemanel.flinder.ViewPager.ViewPagerFragment;
 

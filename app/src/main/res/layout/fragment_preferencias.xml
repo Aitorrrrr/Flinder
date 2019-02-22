@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical">
+
+    <Switch
+        android:id="@+id/switch_notificaciones_preferencias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Notificaciones" />
+
+
+    <EditText
+        android:id="@+id/et_muestrame_preferencias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="Muestrame"
+        android:inputType="textPersonName" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_cerrarSesion_preferencias"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="12dp"
+        android:text="Cerrar Sesión" />
+</LinearLayout>

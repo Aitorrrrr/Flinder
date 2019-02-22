@@ -10,21 +10,21 @@
         android:layout_height="200dp"
         android:layout_marginLeft="85dp"
         android:src="@drawable/common_google_signin_btn_icon_dark"/>
+
     <Button
         android:id="@+id/btn_perfil_perfilTab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/img_imagenPerfil_perfilTab"
         android:layout_marginLeft="75dp"
-        android:text="@string/perfil"
-        />
+        android:text="@string/perfil" />
+
     <Button
         android:id="@+id/btn_ajustes_perfilTab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/img_imagenPerfil_perfilTab"
-        android:layout_toRightOf="@+id/btn_perfil_perfilTab"
         android:layout_marginLeft="50dp"
-        android:text="@string/btnAjus"
-        />
+        android:layout_toRightOf="@+id/btn_perfil_perfilTab"
+        android:text="@string/btnAjus" />
 </RelativeLayout>

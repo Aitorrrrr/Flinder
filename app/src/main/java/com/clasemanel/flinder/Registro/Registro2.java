@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -25,6 +26,8 @@ import android.widget.Toast;
 import com.clasemanel.flinder.Modelo.Usuario;
 import com.clasemanel.flinder.NavigationHost;
 import com.clasemanel.flinder.R;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
 
@@ -33,29 +36,29 @@ import static android.app.Activity.RESULT_OK;
 public class Registro2 extends Fragment implements View.OnClickListener {
 
     private static final String ARG_PARAM1 = "param1";
-
-    private static final int fotos = 1;
-    private int PICK_IMAGE_REQUEST = 111;
-
+    static final int fotos = 1;
+    int PICK_IMAGE_REQUEST = 111;
     private Registro3 registro3;
-    private Usuario userAux;
-
-    private Spinner provincias;
+    private Usuario personas;
+    Spinner provincias;
     private int mYear, mMonth, mDay;
-    private EditText resultado;
-    private EditText genero;
-    private Uri ur;
-    private String ur2;
+    EditText resultado;
+    EditText genero;
+    Uri ur;
+    UploadTask uploadTask;
+    String ur2;
 
-    private Button tomar_foto;
-    private ImageView imageView;
+    Button tomar_foto;
+    ImageView imageView;
 
-    private Button siguiente2;
+    Button siguiente2;
 
-    private TextView errorImageView;
+    TextView errorImageView;
 
-    private EditText nombreRegistro;
-    private EditText apellidosRegistro;
+    EditText nombreRegistro;
+    EditText apellidosRegistro;
+
+    private Uri mImageUri;
 
     public Registro2() {
 
@@ -73,7 +76,7 @@ public class Registro2 extends Fragment implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            userAux = getArguments().getParcelable(ARG_PARAM1);
+            personas = getArguments().getParcelable(ARG_PARAM1);
         }
     }
 
@@ -154,68 +157,30 @@ public class Registro2 extends Fragment implements View.OnClickListener {
         }
 
         if (v.getId()==R.id.btn_foto_reg2){
-
-            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-            intent.setType("image/*");
-            //intent.setAction(Intent.ACTION_PICK);
-            startActivityForResult(Intent.createChooser(intent, "Seleccionar Imagen"), PICK_IMAGE_REQUEST);
-
-           /* final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-
-            LayoutInflater inflater = getActivity().getLayoutInflater();
-
-            View layout=inflater.inflate(R.layout.seleccionar_galeria_camara,null);
-            builder.setView(layout);
-
-            layout.setBackgroundResource(R.color.colorPrimary);
-            builder.setPositiveButton("Salir", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int id) {
-                    dialog.dismiss();
-                }
-            });
-
-            final ImageView galeria=layout.findViewById(R.id.galeria);
-            galeria.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    cargarImagen();
-                    cambiarmensajeBoton();
-                }
-            });
-
-            ImageView camara=layout.findViewById(R.id.camara);
-            camara.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    llamarIntentFoto();
-                    cambiarmensajeBoton();
-                }
-            });*/
-
-            // builder.show();
-            cambiarmensajeBoton();
+            seleccionarFoto();
         }
 
         if (v.getId()==R.id.btn_siguiente_reg2){
 
             if (comprobar()==true){
                 String txtNombre = nombreRegistro.getText().toString().trim();
-                userAux.setNombre(txtNombre);
+                personas.setNombre(txtNombre);
 
                 String txtApellidos = apellidosRegistro.getText().toString().trim();
-                userAux.setApellidos(txtApellidos);
+                personas.setApellidos(txtApellidos);
 
                 String txtLocalidades = provincias.getSelectedItem().toString();
-                userAux.setLocalidad(txtLocalidades);
+                personas.setLocalidad(txtLocalidades);
 
                 String txtFecha = resultado.getText().toString().trim();
-                userAux.setFechaDeNacimiento(txtFecha);
+                personas.setFechaDeNacimiento(txtFecha);
 
                 String txtGenero = genero.getText().toString().trim();
-                userAux.setGenero(txtGenero);
+                personas.setGenero(txtGenero);
 
-                registro3 = Registro3.newInstance(userAux, ur2);
+
+                String imagen = mImageUri.toString();
+                registro3 = Registro3.newInstance(personas, imagen);
                 ((NavigationHost) getActivity()).navigateTo(registro3, true);
             }
             else
@@ -223,46 +188,23 @@ public class Registro2 extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void cargarImagen() {
-        Intent intent=new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/");
-        startActivityForResult(intent.createChooser(intent,"selecciona"),10);
-
-    }
-
-    public void llamarIntentFoto(){
-
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(takePictureIntent, fotos);
+    public void seleccionarFoto()
+    {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-       /* if (requestCode == fotos &&resultCode==RESULT_OK) {
-            Bundle extras = data.getExtras();
-            imagenAuxiliar = (Bitmap) extras.get("data");
-            imageView.setImageBitmap(imagenAuxiliar);
 
-        }*/
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            mImageUri = data.getData();
 
-        if (resultCode==RESULT_OK){
-            Uri path=data.getData();
-            imageView.setImageURI(path);
-        }
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            ur = data.getData();
-            ur2 = data.getDataString();
-
-            try {
-                Bitmap bitmap = android.provider.MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), ur);
-                Bundle extras = data.getExtras();
-                //imagenAuxiliar = (Bitmap) extras.get("data");
-                //ur2 = (String) extras.get("data");
-                imageView.setImageBitmap(bitmap);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            Picasso.with(getContext()).load(mImageUri).into(imageView);
         }
 
     }
@@ -297,6 +239,12 @@ public class Registro2 extends Fragment implements View.OnClickListener {
         String apellido=apellidosRegistro.getText().toString().trim();
         if (apellido.isEmpty()){
             apellidosRegistro.setError("Debe poner los apellidos.");
+            comproba=false;
+        }
+
+        if (mImageUri == null)
+        {
+            Toast.makeText(getContext(), "Debes seleccionar alguna foto", Toast.LENGTH_LONG).show();
             comproba=false;
         }
         return comproba;

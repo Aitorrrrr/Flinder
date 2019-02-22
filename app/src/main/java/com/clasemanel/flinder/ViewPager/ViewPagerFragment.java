@@ -9,10 +9,14 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.clasemanel.flinder.NavigationHost;
+import com.clasemanel.flinder.Perfil.EditarPerfil;
+import com.clasemanel.flinder.Perfil.Preferencias;
 import com.clasemanel.flinder.R;
 
-public class ViewPagerFragment extends Fragment {
+public class ViewPagerFragment extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -21,6 +25,9 @@ public class ViewPagerFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private EditarPerfil editarPerfil;
+    private Preferencias preferencias;
 
 
     private ViewPager viewPage;
