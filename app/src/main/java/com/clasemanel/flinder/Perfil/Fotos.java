@@ -40,12 +40,15 @@ public class Fotos extends Fragment implements View.OnClickListener {
 
     //Imagenes
 
-    private Uri mImageUri1;
-    private Uri mImageUri2;
-    private Uri mImageUri3;
-    private Uri mImageUri4;
-    private Uri mImageUri5;
-    private Uri mImageUri6;
+    private Uri mImageUri;
+
+    String ruta;
+    String img1;
+    String img2;
+    String img3;
+    String img4;
+    String img5;
+    String img6;
 
     //Referencias a la base de datos
 
@@ -69,9 +72,6 @@ public class Fotos extends Fragment implements View.OnClickListener {
     private ImageView fotoPerfil6;
 
     private int ImageViewDestí_id;
-    private String rama;
-
-    private ArrayList<ImageView> listaImgViews;
     private Imagenes imag;
 
     public Fotos() {
@@ -91,60 +91,43 @@ public class Fotos extends Fragment implements View.OnClickListener {
 
         View v = inflater.inflate(R.layout.fragment_fotos, container, false);
 
-
+        imag = new Imagenes(getActivity());
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReferenceFromUrl("gs://flinder-7bcd9.appspot.com");
         mAuth = FirebaseAuth.getInstance();
         bbdd = FirebaseDatabase.getInstance().getReference("Usuarios");
 
-        fotoPerfil1 = (ImageView)v.findViewById(R.id.fotoPerfil1);
-        fotoPerfil2 = (ImageView)v.findViewById(R.id.fotoPerfil2);
-        fotoPerfil2.setOnClickListener(this);
-        fotoPerfil3 = (ImageView) v.findViewById(R.id.fotoPerfil3);
-        fotoPerfil3.setOnClickListener(this);
-        fotoPerfil4 = (ImageView)v.findViewById(R.id.fotoPerfil4);
-        fotoPerfil4.setOnClickListener(this);
-        fotoPerfil5 = (ImageView)v.findViewById(R.id.fotoPerfil5);
-        fotoPerfil5.setOnClickListener(this);
-        fotoPerfil6 = (ImageView)v.findViewById(R.id.fotoPerfil6);
-        fotoPerfil6.setOnClickListener(this);
-
-        imag = new Imagenes();
-        listaImgViews = new ArrayList<>();
-
-        listaImgViews.add(fotoPerfil1);
-        listaImgViews.add(fotoPerfil2);
-        listaImgViews.add(fotoPerfil3);
-        listaImgViews.add(fotoPerfil4);
-        listaImgViews.add(fotoPerfil5);
-        listaImgViews.add(fotoPerfil6);
-
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getInstance().getCurrentUser();
-        nodoImagenes = FirebaseDatabase.getInstance().getReference("Usuarios").child(user.getUid()).child("imagenes");
-        Log.d("MIO",nodoImagenes.toString());
 
-        nodoImagenes.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot imagen: dataSnapshot.getChildren())
-                {
-                    String urlAux = imagen.child("nombre").getValue().toString();
-                    Log.d("MIO",urlAux);
-                    imag.anyadirImagen(urlAux);
-                }
+        fotoPerfil1 = (ImageView)v.findViewById(R.id.iv_FotoPerfil1_Fotos);
+        fotoPerfil1.setOnClickListener(this);
+        fotoPerfil2 = (ImageView)v.findViewById(R.id.iv_FotoPerfil2_Fotos);
+        fotoPerfil2.setOnClickListener(this);
+        fotoPerfil3 = (ImageView)v.findViewById(R.id.iv_FotoPerfil3_Fotos);
+        fotoPerfil3.setOnClickListener(this);
+        fotoPerfil4 = (ImageView)v.findViewById(R.id.iv_FotoPerfil4_Fotos);
+        fotoPerfil4.setOnClickListener(this);
+        fotoPerfil5 = (ImageView)v.findViewById(R.id.iv_FotoPerfil5_Fotos);
+        fotoPerfil5.setOnClickListener(this);
+        fotoPerfil6 = (ImageView)v.findViewById(R.id.iv_FotoPerfil6_Fotos);
+        fotoPerfil6.setOnClickListener(this);
 
-                for (int i = 0; i<imag.getSize(); i++)
-                {
-                    recuperarImagen(listaImgViews.get(i),i);
-                }
-            }
+        img1 = "img1";
+        img2 = "img2";
+        img3 = "img3";
+        img4 = "img4";
+        img5 = "img5";
+        img6 = "img6";
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+        imag.recuperarFoto(fotoPerfil1, img1);
+        imag.recuperarFoto(fotoPerfil2, img2);
+        imag.recuperarFoto(fotoPerfil3, img3);
+        imag.recuperarFoto(fotoPerfil4, img4);
+        imag.recuperarFoto(fotoPerfil5, img5);
+        imag.recuperarFoto(fotoPerfil6, img6);
+
 
         return v;
     }
@@ -158,27 +141,6 @@ public class Fotos extends Fragment implements View.OnClickListener {
     @Override
     public void onDetach() {
         super.onDetach();
-    }
-
-    private void recuperarImagen(final ImageView imgLogo, int posicion) {
-
-        StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("prueba2").child(imag.recuperarImagen(posicion));
-        Log.d("MIO",mStorage.toString());
-        mStorage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.with(getContext())
-                        .load(uri)
-                        .fit()
-                        .centerCrop()
-                        .into(imgLogo);
-            }
-        });
-        mStorage.getDownloadUrl().addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-            }
-        });
     }
 
     public void seleccionarFoto()
@@ -198,18 +160,18 @@ public class Fotos extends Fragment implements View.OnClickListener {
                 && data != null && data.getData() != null)
         {
             ImageView desti = (ImageView) getActivity().findViewById(ImageViewDestí_id);
-            mImageUri2 = data.getData();
+            mImageUri = data.getData();
             Picasso.with(getContext())
-                    .load(mImageUri2)
+                    .load(mImageUri)
                     .fit()
                     .centerCrop()
                     .into(desti);
-            uploadFile(mImageUri2, rama, imag, user.getUid());
+            uploadFile(mImageUri, ruta, user.getUid());
         }
 
     }
 
-    private void uploadFile(final Uri imagen, final String numeroFoto, final Imagenes imag, final String uid) {
+    private void uploadFile(final Uri imagen, final String numeroFoto, final String uid) {
         if (imagen != null) {
             final String ahora = ""+System.currentTimeMillis();
             String rutaImagen = "prueba2/"+ahora;
@@ -234,38 +196,45 @@ public class Fotos extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v.getId()==R.id.fotoPerfil2)
+        if (v.getId()==R.id.iv_FotoPerfil1_Fotos)
         {
-            ImageViewDestí_id =R.id.fotoPerfil2;
-            rama = "img2";
+            ImageViewDestí_id =R.id.iv_FotoPerfil1_Fotos;
+            ruta = img1;
             seleccionarFoto();
         }
 
-        if (v.getId()==R.id.fotoPerfil3)
+        if (v.getId()==R.id.iv_FotoPerfil2_Fotos)
         {
-            ImageViewDestí_id =R.id.fotoPerfil3;
-            rama = "img3";
+            ImageViewDestí_id =R.id.iv_FotoPerfil2_Fotos;
+            ruta = img2;
             seleccionarFoto();
         }
 
-        if (v.getId()==R.id.fotoPerfil4)
+        if (v.getId()==R.id.iv_FotoPerfil3_Fotos)
         {
-            ImageViewDestí_id =R.id.fotoPerfil4;
-            rama = "img4";
+            ImageViewDestí_id =R.id.iv_FotoPerfil3_Fotos;
+            ruta = img3;
             seleccionarFoto();
         }
 
-        if (v.getId()==R.id.fotoPerfil5)
+        if (v.getId()==R.id.iv_FotoPerfil4_Fotos)
         {
-            ImageViewDestí_id =R.id.fotoPerfil5;
-            rama = "img5";
+            ImageViewDestí_id =R.id.iv_FotoPerfil4_Fotos;
+            ruta = img4;
             seleccionarFoto();
         }
 
-        if (v.getId()==R.id.fotoPerfil6)
+        if (v.getId()==R.id.iv_FotoPerfil5_Fotos)
         {
-            ImageViewDestí_id =R.id.fotoPerfil6;
-            rama = "img6";
+            ImageViewDestí_id =R.id.iv_FotoPerfil5_Fotos;
+            ruta = img5;
+            seleccionarFoto();
+        }
+
+        if (v.getId()==R.id.iv_FotoPerfil6_Fotos)
+        {
+            ImageViewDestí_id =R.id.iv_FotoPerfil6_Fotos;
+            ruta = img6;
             seleccionarFoto();
         }
     }

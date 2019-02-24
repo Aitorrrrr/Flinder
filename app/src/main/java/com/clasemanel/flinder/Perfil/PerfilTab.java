@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.clasemanel.flinder.Modelo.Imagenes;
 import com.clasemanel.flinder.NavigationHost;
 import com.clasemanel.flinder.R;
 
@@ -25,6 +26,8 @@ public class PerfilTab extends Fragment implements View.OnClickListener {
 
     private Button editar;
     private Button prefs;
+
+    private Imagenes imagenes;
 
     private Preferencias preferencias;
     private EditarPerfil editarPerfil;
@@ -57,10 +60,13 @@ public class PerfilTab extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_perfil_tab, container, false);
+        imagenes = new Imagenes(getContext());
 
         imagePerfil = (ImageView) v.findViewById(R.id.img_imagenPerfil_perfilTab);
         btnAjustes = (Button) v.findViewById(R.id.btn_ajustes_perfilTab);
         btnPerfil = (Button) v.findViewById(R.id.btn_perfil_perfilTab);
+
+        imagenes.recuperarFoto(imagePerfil, "img1");
 
         editar = (Button) v.findViewById(R.id.btn_perfil_perfilTab);
         editar.setOnClickListener(this);

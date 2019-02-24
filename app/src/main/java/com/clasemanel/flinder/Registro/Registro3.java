@@ -93,7 +93,6 @@ public class Registro3 extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_registro3, container, false);
-        imag = new Imagenes();
         mImageUri = Uri.parse(url);
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReferenceFromUrl("gs://flinder-7bcd9.appspot.com");

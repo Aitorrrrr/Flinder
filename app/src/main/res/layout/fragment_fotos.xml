@@ -4,102 +4,109 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:columnCount="2"
-    android:padding="10dp"
     android:rowCount="3"
-    android:useDefaultMargins="true"
-    android:background="@drawable/background">
+    android:orientation="horizontal">
 
 
-    <android.support.design.card.MaterialCardView
-        android:id="@+id/foto1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_gravity="fill"
-        android:layout_margin="10dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/fotoPerfil1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </android.support.design.card.MaterialCardView>
-
-    <android.support.design.card.MaterialCardView
-        android:id="@+id/foto2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_gravity="fill"
-        android:layout_margin="10dp">
-
-        <ImageView
-            android:id="@+id/fotoPerfil2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    </android.support.design.card.MaterialCardView>
-
-    <android.support.design.card.MaterialCardView
-        android:id="@+id/foto3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_margin="10dp">
-
-        <ImageView
-            android:id="@+id/fotoPerfil3"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp" />
-    </android.support.design.card.MaterialCardView>
+            android:orientation="vertical">
 
-    <android.support.design.card.MaterialCardView
-        android:id="@+id/foto4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_margin="10dp">
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/cv_Card_Foto1_Fotos"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp">
 
-        <ImageView
-            android:id="@+id/fotoPerfil4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp" />
-    </android.support.design.card.MaterialCardView>
+                <ImageView
+                    android:id="@+id/iv_FotoPerfil1_Fotos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/perfil" />
+            </android.support.design.card.MaterialCardView>
 
-    <android.support.design.card.MaterialCardView
-        android:id="@+id/foto5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_margin="10dp">
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/cv_Card_Foto2_Fotos"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp">
 
-        <ImageView
-            android:id="@+id/fotoPerfil5"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+                <ImageView
+                    android:id="@+id/iv_FotoPerfil2_Fotos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/perfil" />
+            </android.support.design.card.MaterialCardView>
 
-    </android.support.design.card.MaterialCardView>
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/cv_Card_Foto3_Fotos"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp">
 
-    <android.support.design.card.MaterialCardView
-        android:id="@+id/foto6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_margin="10dp">
+                <ImageView
+                    android:id="@+id/iv_FotoPerfil3_Fotos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/perfil" />
+            </android.support.design.card.MaterialCardView>
 
-        <ImageView
-            android:id="@+id/fotoPerfil6"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp" />
-    </android.support.design.card.MaterialCardView>
 
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/cv_Card_Foto4_Fotos"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp">
+
+                <ImageView
+                    android:id="@+id/iv_FotoPerfil4_Fotos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/perfil" />
+            </android.support.design.card.MaterialCardView>
+
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/cv_Card_Foto5_Fotos"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp">
+
+                <ImageView
+                    android:id="@+id/iv_FotoPerfil5_Fotos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/perfil" />
+            </android.support.design.card.MaterialCardView>
+
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/cv_Card_Foto6_Fotos"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_margin="20dp">
+
+                <ImageView
+                    android:id="@+id/iv_FotoPerfil6_Fotos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/perfil" />
+            </android.support.design.card.MaterialCardView>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
 </GridLayout>
