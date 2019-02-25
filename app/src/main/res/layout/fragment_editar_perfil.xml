@@ -18,7 +18,7 @@
             android:id="@+id/et_nombre_editarPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre"
+            android:hint="@string/nombre"
             android:inputType="textCapWords"
             android:textColor="#ffff"
             android:textColorHint="#fff" />
@@ -33,24 +33,24 @@
         android:textColor="#ffff">
 
         <EditText
-            android:textColorHint="#fff"
-            android:textColor="#ffff"
             android:id="@+id/et_apellidos_editarPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Apellidos"
-            android:inputType="textCapWords" />
+            android:hint="@string/apellidos"
+            android:inputType="textCapWords"
+            android:textColor="#ffff"
+            android:textColorHint="#fff" />
     </android.support.design.widget.TextInputLayout>
 
 
     <TextView
-        android:textColorHint="#fff"
-        android:textColor="#ffff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:text="Localidad:" />
+        android:text="@string/localidad"
+        android:textColor="#ffff"
+        android:textColorHint="#fff" />
 
     <Spinner
         android:id="@+id/spinner_provincias_editarPerfil"
@@ -70,7 +70,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="30dp"
         android:padding="12dp"
-        android:text="Guardar" />
+        android:text="@string/guardar" />
 
 
     <FrameLayout

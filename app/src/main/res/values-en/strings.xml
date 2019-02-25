@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Flinder</string>
+    <string name="cartas">Letter</string>
+    <string name="chat">Chat</string>
+    <string name="btnAjus">Settings</string>
+    <string name="btnPerfil">Profile</string>
+    <string name="email">Email Adress</string>
+    <string name="contrasenya">Password</string>
+    <string name="entrar">Login</string>
+    <string name="crearCuenta">Don\'t have an account? Create new account</string>
+    <string name="registro">Register</string>
+    <string name="nombreDeUsuario">Username</string>
+    <string name="repetirContrasenya">Repeat password</string>
+    <string name="siguiente">Next</string>
+    <string name="nombre">Name</string>
+    <string name="apellidos">Surnames</string>
+    <string name="subirFoto">Upload photo</string>
+    <string name="localidad">Location</string>
+    <string name="fechaNacimiento">Select date of birth</string>
+    <string name="genero">Gender</string>
+    <string name="queBusco">What are you looking for?</string>
+    <string name="aceptar">Accept</string>
+    <string name="notificaciones">Notifications</string>
+    <string name="muestrame">Show me</string>
+    <string name="cerrarSesion">Close session</string>
+    <string name="guardar">Save</string>
+    <string name="perfil">Profile</string>
+    <string name="hombre">Male</string>
+    <string name="mujer">Woman</string>
+    <string name="generoBinario">Binary Gender</string>
+    <string name="ambos">Both</string>
+    <string name="mensajeDeBusqueda">"Select what you are looking for"</string>
+    <string name="todo">All</string>
+</resources>

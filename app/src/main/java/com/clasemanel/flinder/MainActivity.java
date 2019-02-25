@@ -11,6 +11,8 @@ import android.os.Bundle;
 import com.clasemanel.flinder.LogIn.LoginFragment;
 import com.clasemanel.flinder.Perfil.EditarPerfil;
 
+import com.clasemanel.flinder.Registro.Registro1;
+import com.clasemanel.flinder.Registro.Registro3;
 import com.clasemanel.flinder.ViewPager.ViewPagerAdapter;
 import com.clasemanel.flinder.ViewPager.ViewPagerFragment;
 
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements NavigationHost, V
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.container, new LoginFragment())
+                    .add(R.id.container, new Registro1())
                     .commit();
         }
     }

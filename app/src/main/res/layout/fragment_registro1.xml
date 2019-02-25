@@ -29,12 +29,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Registro"
-                android:textSize="76px"
                 android:gravity="center"
-                android:textStyle="bold"
+                android:text="@string/registro"
+                android:textColor="#ffff"
                 android:textColorHint="#fff"
-                android:textColor="#ffff"/>
+                android:textSize="76px"
+                android:textStyle="bold" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -46,13 +46,13 @@
             android:textColor="#ffff">
 
             <EditText
-                android:textColorHint="#fff"
-                android:textColor="#ffff"
                 android:id="@+id/et_nombreUser_reg1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre de Usuario"
-                android:inputType="textCapWords" />
+                android:hint="@string/nombreDeUsuario"
+                android:inputType="textCapWords"
+                android:textColor="#ffff"
+                android:textColorHint="#fff" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Email Label -->
@@ -65,13 +65,13 @@
             android:textColor="#ffff">
 
             <EditText
-                android:textColorHint="#fff"
-                android:textColor="#ffff"
                 android:id="@+id/et_email_reg1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Correo Electronico"
-                android:inputType="textEmailAddress" />
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textColor="#ffff"
+                android:textColorHint="#fff" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
@@ -87,10 +87,10 @@
                 android:id="@+id/et_password_reg1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Contraseña"
+                android:hint="@string/contrasenya"
                 android:inputType="textPassword"
-                android:textColorHint="#fff"
-                android:textColor="#ffff"/>
+                android:textColor="#ffff"
+                android:textColorHint="#fff" />
         </android.support.design.widget.TextInputLayout>
 
 
@@ -101,14 +101,15 @@
             android:layout_marginBottom="8dp"
             android:textColorHint="#fff"
             android:textColor="#ffff">
+
             <EditText
-                android:textColorHint="#fff"
-                android:textColor="#ffff"
                 android:id="@+id/et_repetirPassword_reg1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Repetir Contraseña"
-                android:inputType="textPassword" />
+                android:hint="@string/repetirContrasenya"
+                android:inputType="textPassword"
+                android:textColor="#ffff"
+                android:textColorHint="#fff" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton
@@ -118,7 +119,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Siguiente"/>
+            android:text="@string/siguiente" />
 
     </LinearLayout>
 </ScrollView>

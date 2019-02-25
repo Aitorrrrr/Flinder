@@ -32,10 +32,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Registro"
-                android:textSize="76px"
                 android:gravity="center"
-                android:textStyle="bold"/>
+                android:text="@string/registro"
+                android:textSize="76px"
+                android:textStyle="bold" />
         </android.support.design.widget.TextInputLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,12 +49,12 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:textColorHint="#fff"
-                    android:textColor="#ffff"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="Que estas buscando:"
-                    android:gravity="center"/>
+                    android:textColor="#ffff"
+                    android:textColorHint="#fff" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -87,7 +87,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Aceptar" />
+            android:text="@string/aceptar" />
 
     </LinearLayout>
 </ScrollView>

@@ -124,10 +124,11 @@ public class Registro3 extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId()==R.id.et_queBuscas_reg3){
-            final CharSequence[] items = { "Hombres", "Mujeres", "Genero Binario", "Ambos", "Todos"};
+
+            final CharSequence[] items = { getString(R.string.hombre), getString(R.string.mujer), getString(R.string.generoBinario), getString(R.string.ambos), getString(R.string.todo)};
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setTitle("Seleccione lo que esta buscando:");
+            builder.setTitle(getString(R.string.mensajeDeBusqueda));
             builder.setItems(items, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int item) {
 

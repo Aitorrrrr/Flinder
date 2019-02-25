@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="Notificaciones" />
+        android:text="@string/notificaciones" />
 
 
     <EditText
@@ -23,7 +23,7 @@
         android:ems="10"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:hint="Muestrame"
+        android:hint="@string/muestrame"
         android:inputType="textPersonName" />
 
     <android.support.v7.widget.AppCompatButton

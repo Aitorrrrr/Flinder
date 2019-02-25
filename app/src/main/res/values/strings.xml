@@ -1,10 +1,37 @@
 <resources>
-    <string name="app_name">TinderPI</string>
+    <string name="app_name">Flinder</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="perfil">PERFIL</string>
     <string name="cartas">CARTAS</string>
     <string name="chat">CHAT</string>
     <string name="btnAjus">AJUSTES</string>
     <string name="btnPerfil">PERFIL</string>
+    <string name="email">Correo Electronico</string>
+    <string name="contrasenya">Contraseña</string>
+    <string name="entrar">Entrar</string>
+    <string name="crearCuenta">¿No tiene una cuenta?, Create una</string>
+    <string name="registro">Registro</string>
+    <string name="nombreDeUsuario">Nombre de usuario</string>
+    <string name="repetirContrasenya">Repetir contraseña</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="subirFoto">Subir foto</string>
+    <string name="localidad">Localidad</string>
+    <string name="fechaNacimiento">Seleccione la fecha de nacimiento</string>
+    <string name="genero">Seleccione su genero</string>
+    <string name="queBusco">¿Que estas buscando?</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="muestrame">Muestrame</string>
+    <string name="cerrarSesion">Cerrar Sesión</string>
+    <string name="guardar">Guardar</string>
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+    <string name="generoBinario">Genero Binario</string>
+    <string name="ambos">Ambos</string>
+    <string name="mensajeDeBusqueda">"Seleccione lo que esta buscando"</string>
+    <string name="todo">Todo</string>
+    
+
 </resources>

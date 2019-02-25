@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/img_imagenPerfil_perfilTab"
         android:layout_marginLeft="75dp"
-        android:text="@string/perfil" />
+        android:text="@string/btnPerfil" />
 
     <Button
         android:id="@+id/btn_ajustes_perfilTab"
