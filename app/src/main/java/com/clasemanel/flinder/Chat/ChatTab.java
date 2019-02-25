@@ -92,31 +92,38 @@ public class ChatTab extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         usuario = mAuth.getCurrentUser();
-        bbdd = FirebaseDatabase.getInstance().getReference("Usuarios").child("Usuario").child("matches");
+        bbdd = FirebaseDatabase.getInstance().getReference("Usuarios").child(usuario.getUid()).child("matches");
         bbddUser = FirebaseDatabase.getInstance().getReference("Usuarios");
+
+        Log.d("MIO",bbdd.toString());
+        Log.d("MIO",bbddUser.toString());
 
         bbdd.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                arrayChatPicker.clear();
+
                 for (DataSnapshot match: dataSnapshot.getChildren())
                 {
                     ChatPicker cpm;
                     if (match.getChildrenCount()>1)
                     {
                         Log.d("MIO","2 hijos");
-                        Log.d("MIO",match.child("idDelUser").getValue().toString());
-                        cpm = new ChatPicker(match.child("idDelUser").getValue().toString(),"algo","Algo mas");
+                        Log.d("MIO",match.child("idUser").getValue().toString());
+                        cpm = new ChatPicker(match.child("idUser").getValue().toString(), match.child("idChat").getValue().toString());
+                        cpm.setIdMatch(match.getKey());
                         arrayChatPicker.add(cpm);
                         Log.d("MIO",""+arrayChatPicker.size());
                     }
                     else
                     {
                         Log.d("MIO","1 hijo");
-                        cpm = new ChatPicker(match.child("idDelUser").getValue().toString());
+                        cpm = new ChatPicker(match.child("idUser").getValue().toString());
+                        cpm.setIdMatch(match.getKey());
                         arrayChatPicker.add(cpm);
                     }
                 }
-                iniciarRecycler();
+                datosMatches();
             }
 
             @Override
@@ -128,9 +135,45 @@ public class ChatTab extends Fragment {
         return v;
     }
 
+    public void datosMatches()
+    {
+        Log.d("MIO","Datos matches");
+        for (int i=0; i<arrayChatPicker.size(); i++)
+        {
+            final int aux = i;
+            String idUser = arrayChatPicker.get(i).getIdUser();
+
+            final DatabaseReference userMatch = bbddUser.child(idUser);
+            Log.d("MIO","Antes del listener de "+userMatch.toString());
+            userMatch.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String nombre = dataSnapshot.child("nombre").getValue().toString();
+                    Log.d("MIO","Nombre match:" +nombre);
+                    arrayChatPicker.get(aux).setNombreUser(nombre);
+
+                    String imagen = dataSnapshot.child("imagenes").child("img1").child("nombre").getValue().toString();
+                    Log.d("MIO","Imagen match:" +imagen);
+                    arrayChatPicker.get(aux).setImagen(imagen);
+                    arrayChatPicker.get(aux).setImagenCargada(true);
+
+                    adaptadorRecycler.setListaChats(arrayChatPicker);
+                    adaptadorRecycler.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+        iniciarRecycler();
+    }
+
     public void iniciarRecycler()
     {
-        adaptadorRecycler = new ChatAdaptador(arrayChatPicker);
+        adaptadorRecycler = new ChatAdaptador(arrayChatPicker, getContext());
         rc.setAdapter(adaptadorRecycler);
     }
 

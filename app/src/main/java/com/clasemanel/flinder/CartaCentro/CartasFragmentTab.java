@@ -92,6 +92,12 @@ public class CartasFragmentTab extends Fragment implements CardStackListener {
         if (manager.getTopPosition() == adapter.getItemCount() - 5) {
             paginate();
         }
+        if (direction.toString().compareTo("Right")==0)
+        {
+            String claveMatch = bbdd.push().getKey();
+            bbdd.child(usuario.getUid()).child("matches").child(claveMatch).child("idUser").setValue(listaUsers.get(manager.getTopPosition()-1).getId());
+            bbdd.child(listaUsers.get(manager.getTopPosition()-1).getId()).child("matches").child(claveMatch).child("idUser").setValue(usuario.getUid());
+        }
     }
 
     @Override

@@ -1,29 +1,66 @@
 package com.clasemanel.flinder.Modelo;
 
-public class ChatPicker {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ChatPicker implements Parcelable {
 
     private String nombreUser;
-    private String id;
+    private String idUser;
     private String imagen;
+    private String idChat;
+    private boolean imagenCargada;
+    private String idMatch;
 
     public ChatPicker() {
 
     }
 
-    public ChatPicker(String id) {
-        this.id = id;
+    public ChatPicker(String idUser) {
+        this.idUser = idUser;
     }
 
-    public ChatPicker(String nombreUser, String id) {
-        this.nombreUser = nombreUser;
-        this.id = id;
+    public ChatPicker(String idUser, String idChat) {
+        this.idChat = idChat;
+        this.idUser = idUser;
     }
 
-    public ChatPicker(String nombreUser, String id, String imagen) {
-        this.nombreUser = nombreUser;
-        this.id = id;
-        this.imagen=imagen;
+    protected ChatPicker(Parcel in) {
+        nombreUser = in.readString();
+        idUser = in.readString();
+        imagen = in.readString();
+        idChat = in.readString();
+        imagenCargada = in.readByte() != 0x00;
+        idMatch = in.readString();
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nombreUser);
+        dest.writeString(idUser);
+        dest.writeString(imagen);
+        dest.writeString(idChat);
+        dest.writeByte((byte) (imagenCargada ? 0x01 : 0x00));
+        dest.writeString(idMatch);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<ChatPicker> CREATOR = new Parcelable.Creator<ChatPicker>() {
+        @Override
+        public ChatPicker createFromParcel(Parcel in) {
+            return new ChatPicker(in);
+        }
+
+        @Override
+        public ChatPicker[] newArray(int size) {
+            return new ChatPicker[size];
+        }
+    };
 
     public String getNombreUser() {
         return nombreUser;
@@ -33,12 +70,12 @@ public class ChatPicker {
         this.nombreUser = nombreUser;
     }
 
-    public String getId() {
-        return id;
+    public String getIdUser() {
+        return idUser;
     }
 
-    public void setId(String ultimMensaje) {
-        this.id = id;
+    public void setIdUser(String ultimMensaje) {
+        this.idUser = idUser;
     }
 
     public String getImagen() {
@@ -47,5 +84,29 @@ public class ChatPicker {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
+    }
+
+    public String getIdChat() {
+        return idChat;
+    }
+
+    public void setIdChat(String idChat) {
+        this.idChat = idChat;
+    }
+
+    public boolean isImagenCargada() {
+        return imagenCargada;
+    }
+
+    public void setImagenCargada(boolean imagenCargada) {
+        this.imagenCargada = imagenCargada;
+    }
+
+    public String getIdMatch() {
+        return idMatch;
+    }
+
+    public void setIdMatch(String idMatch) {
+        this.idMatch = idMatch;
     }
 }
