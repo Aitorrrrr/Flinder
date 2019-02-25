@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Que estas buscando:"
+                    android:text="@string/queBusco"
                     android:textColor="#ffff"
                     android:textColorHint="#fff" />
             </android.support.design.widget.TextInputLayout>

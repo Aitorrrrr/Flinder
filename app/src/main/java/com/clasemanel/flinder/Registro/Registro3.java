@@ -148,7 +148,7 @@ public class Registro3 extends Fragment implements View.OnClickListener {
 
             }
             else
-                Toast.makeText(getContext(),"no va",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),getString(R.string.algoNoVa),Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -158,7 +158,7 @@ public class Registro3 extends Fragment implements View.OnClickListener {
         String Buscar= resultadoBuscar.getText().toString().trim();
         if(Buscar.isEmpty()){
 
-            resultadoBuscar.setError("Debe seleccionar una fecha.");
+            resultadoBuscar.setError(getString(R.string.errorBusqueda));
             comproba=false;
         }
         else
@@ -185,7 +185,7 @@ public class Registro3 extends Fragment implements View.OnClickListener {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
+                            Log.d(TAG, getString(R.string.crearUsuarioConEmail));
                             FirebaseUser user = mAuth.getCurrentUser();
                             String uid = user.getUid();
                             agregarDatos(personas, uid);
@@ -193,7 +193,7 @@ public class Registro3 extends Fragment implements View.OnClickListener {
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Log.w(TAG, getString(R.string.crearUsuarioConEmail), task.getException());
                             updateUI(null);
                         }
                     }
@@ -216,7 +216,7 @@ public class Registro3 extends Fragment implements View.OnClickListener {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             bbdd.child(uid).child("imagenes").child("img1").child("nombre").setValue(ahora);
-                            Toast.makeText(getContext(), "Upload successful", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), getString(R.string.subidaCompletada), Toast.LENGTH_LONG).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

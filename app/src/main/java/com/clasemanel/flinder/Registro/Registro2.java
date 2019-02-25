@@ -141,10 +141,10 @@ public class Registro2 extends Fragment implements View.OnClickListener {
         }
 
         if (v.getId()==R.id.et_generoSel_reg2){
-            final CharSequence[] items = { "Hombre", "Mujer", "Prefiero no especificar"};
+            final CharSequence[] items = { getString(R.string.hombre), getString(R.string.mujer), getString(R.string.noEspecificar)};
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setTitle("Seleccione su género:");
+            builder.setTitle(getString(R.string.genero));
             builder.setItems(items, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int item) {
 
@@ -184,7 +184,7 @@ public class Registro2 extends Fragment implements View.OnClickListener {
                 ((NavigationHost) getActivity()).navigateTo(registro3, true);
             }
             else
-                Toast.makeText(getContext(),"no va",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),getString(R.string.algoNoVa),Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -215,7 +215,7 @@ public class Registro2 extends Fragment implements View.OnClickListener {
         comproba=true;
         String resultadoFecha=resultado.getText().toString().trim();
         if(resultadoFecha.isEmpty()){
-            resultado.setError("Debe seleccionar una fecha.");
+            resultado.setError(getString(R.string.seleccionaUnaFecha));
             comproba=false;
         }
         else
@@ -224,7 +224,7 @@ public class Registro2 extends Fragment implements View.OnClickListener {
         }
         String resultadoGenero=genero.getText().toString().trim();
         if (resultadoGenero.isEmpty()){
-            genero.setError("Debe seleccionar un género.");
+            genero.setError(getString(R.string.seleccionaGenero));
             comproba=false;
         }
         else {
@@ -233,24 +233,20 @@ public class Registro2 extends Fragment implements View.OnClickListener {
 
         String nombre=nombreRegistro.getText().toString().trim();
         if (nombre.isEmpty()){
-            nombreRegistro.setError("Debe poner un nombre.");
+            nombreRegistro.setError(getString(R.string.ponerNombre));
             comproba=false;
         }
         String apellido=apellidosRegistro.getText().toString().trim();
         if (apellido.isEmpty()){
-            apellidosRegistro.setError("Debe poner los apellidos.");
+            apellidosRegistro.setError(getString(R.string.ponerApellidos));
             comproba=false;
         }
 
         if (mImageUri == null)
         {
-            Toast.makeText(getContext(), "Debes seleccionar alguna foto", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), getString(R.string.seleccionarFoto), Toast.LENGTH_LONG).show();
             comproba=false;
         }
         return comproba;
-    }
-
-    public void cambiarmensajeBoton(){
-        tomar_foto.setText("Editar");
     }
 }

@@ -19,6 +19,7 @@
     <string name="localidad">Location</string>
     <string name="fechaNacimiento">Select date of birth</string>
     <string name="genero">Gender</string>
+    <string name="noEspecificar">I prefer not to specify</string>
     <string name="queBusco">What are you looking for?</string>
     <string name="aceptar">Accept</string>
     <string name="notificaciones">Notifications</string>
@@ -32,4 +33,23 @@
     <string name="ambos">Both</string>
     <string name="mensajeDeBusqueda">"Select what you are looking for"</string>
     <string name="todo">All</string>
+
+    <string name="espacioEnBlanco">You cant leave this space blank</string>
+    <string name="correoInvalido">Invalid email address</string>
+    <string name="noCoincide">Passwords do not match</string>
+    <string name="comprobacion">Check that you have entered the data correctly</string>
+    <string name="patternInvalido">Check that you have entered the password correctly, it has to be between 4 and 20 characters.</string>
+    <string name="algoNoVa">Somethings not right, check that youve filled in all the fields</string>
+    <string name="seleccionaUnaFecha">You must select a date</string>
+    <string name="seleccionaGenero">You must select a gender</string>
+    <string name="ponerNombre">You must put a name</string>
+    <string name="ponerApellidos">You must enter the surname(s)</string>
+    <string name="seleccionarFoto">You must select some photo</string>
+    <string name="errorBusqueda">What are you looking for?</string>
+    <string name="crearUsuarioConEmail">A new user has been created</string>
+    <string name="crearUsuarioConEmailFalla">Somethings wrong</string>
+    <string name="subidaCompletada">Upload completed</string>
+    <string name="notificacionesActivadas">Notifications Activated</string>
+    <string name="notificacionesDesactivadas">Notifications Deactivated</string>
+    <string name="desconectado">Disconnected</string>
 </resources>

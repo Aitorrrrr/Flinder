@@ -90,7 +90,7 @@ public class Registro1 extends Fragment implements View.OnClickListener {
         String emailIntroducido = email.getText().toString().trim();
         if (emailIntroducido.isEmpty())
         {
-            email.setError("No se puede dejar este espacio en blanco");
+            email.setError(getString(R.string.espacioEnBlanco));
             return false;
         }
         else {
@@ -101,7 +101,7 @@ public class Registro1 extends Fragment implements View.OnClickListener {
                 email.setError(null);
                 return true;
             }else {
-                email.setError("Dirección de correo no válida");
+                email.setError(getString(R.string.correoInvalido));
                 return false;
             }
         }
@@ -116,16 +116,16 @@ public class Registro1 extends Fragment implements View.OnClickListener {
 
         if (contrasenya1.isEmpty())
         {
-            contrasenya.setError("No se puede dejar este espacio en blanco");
+            contrasenya.setError(getString(R.string.espacioEnBlanco));
             return false;
         }
         else if (!contrasenya1.equals(contrasenya2))
         {
-            contrasenya.setError("Las contraseñas no coincide");
+            contrasenya.setError(getString(R.string.noCoincide));
             return false;
         }
         else if (patternCorrecto==false){
-            contrasenya.setError("Comprueba de que has introducido correctamente la contraseña, tiene que ser entre 8 y 40 carácteres");
+            contrasenya.setError(getString(R.string.patternInvalido));
             return false;
         }
         else {
@@ -147,7 +147,7 @@ public class Registro1 extends Fragment implements View.OnClickListener {
         String nombre = nombreUsuario.getText().toString();
         if (nombre.isEmpty())
         {
-            nombreUsuario.setError("No se puede dejar este espacio en blanco");
+            nombreUsuario.setError(getString(R.string.espacioEnBlanco));
             return false;
         }
         else
@@ -179,7 +179,7 @@ public class Registro1 extends Fragment implements View.OnClickListener {
         }
         else
         {
-            Toast.makeText(getContext(), "Comprueba de que has introducido correctamente los datos", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), getString(R.string.comprobacion), Toast.LENGTH_LONG).show();
         }
 
     }

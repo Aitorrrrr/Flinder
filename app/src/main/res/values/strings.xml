@@ -20,6 +20,7 @@
     <string name="localidad">Localidad</string>
     <string name="fechaNacimiento">Seleccione la fecha de nacimiento</string>
     <string name="genero">Seleccione su genero</string>
+    <string name="noEspecificar">Prefiero no especificar</string>
     <string name="queBusco">¿Que estas buscando?</string>
     <string name="aceptar">Aceptar</string>
     <string name="notificaciones">Notificaciones</string>
@@ -30,8 +31,24 @@
     <string name="mujer">Mujer</string>
     <string name="generoBinario">Genero Binario</string>
     <string name="ambos">Ambos</string>
-    <string name="mensajeDeBusqueda">"Seleccione lo que esta buscando"</string>
+    <string name="mensajeDeBusqueda">Seleccione lo que esta buscando</string>
     <string name="todo">Todo</string>
-    
-
+    <string name="espacioEnBlanco">No se puede dejar este espacio en blanco</string>
+    <string name="correoInvalido">Dirección de correo no válida</string>
+    <string name="noCoincide">Las contraseñas no coincide</string>
+    <string name="comprobacion">Comprueba de que has introducido correctamente los datos</string>
+    <string name="patternInvalido">Comprueba de que has introducido correctamente la contraseña, tiene que ser entre 4 y 20 carácteres</string>
+    <string name="algoNoVa">Algo no va, Comprueba de que has rellenado todos los campos</string>
+    <string name="seleccionaUnaFecha">Debe seleccionar una fecha</string>
+    <string name="seleccionaGenero">Debe seleccionar un género</string>
+    <string name="ponerNombre">Debe poner un nombre</string>
+    <string name="ponerApellidos">Debe poner los apellidos</string>
+    <string name="seleccionarFoto">Debe seleccionar alguna foto</string>
+    <string name="errorBusqueda">¿Que estas buscando?</string>
+    <string name="crearUsuarioConEmail">Se ha creado un nuevo usuario</string>
+    <string name="crearUsuarioConEmailFalla">Algo va mal</string>
+    <string name="subidaCompletada">Subida completada</string>
+    <string name="notificacionesActivadas">Notificaciones Activadas</string>
+    <string name="notificacionesDesactivadas">Notificaciones Desactivadas</string>
+    <string name="desconectado">Desconectado</string>
 </resources>

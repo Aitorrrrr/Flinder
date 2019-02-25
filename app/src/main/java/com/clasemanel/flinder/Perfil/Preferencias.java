@@ -91,27 +91,27 @@ public class Preferencias extends Fragment implements View.OnClickListener {
     private void logOut(){
         login =new LoginFragment();
         ((NavigationHost) getActivity()).navigateTo(login,false);
-        Toast.makeText(getContext(),"Exito", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(),getString(R.string.desconectado), Toast.LENGTH_SHORT).show();
     }
 
     private void notificaciones(){
 
         if(notificaciones.isChecked())
         {
-            Toast.makeText(getContext(),"On", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),getText(R.string.notificacionesActivadas), Toast.LENGTH_SHORT).show();
         }
         else
         {
-            Toast.makeText(getContext(),"Off", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),getText(R.string.notificacionesDesactivadas), Toast.LENGTH_SHORT).show();
         }
     }
 
     public void mostrar() {
 
-        final CharSequence[] items = { "Hombres", "Mujeres", "Todos"};
+        final CharSequence[] items = { getString(R.string.hombre), getString(R.string.mujer), getString(R.string.todo)};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Mostrar:");
+        builder.setTitle(getString(R.string.queBusco));
         builder.setItems(items, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
                 muestrame.setText(items[item]);
