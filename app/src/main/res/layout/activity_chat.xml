@@ -30,8 +30,7 @@
             android:layout_gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Hola un nombre"/>
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -78,11 +77,11 @@
 
         <Button
             android:id="@+id/btn_enviar_chatDentro"
-            android:text="Enviar"
+            android:text="@string/enviar"
             android:textSize="14dp"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
-            android:layout_width="64dp"
+            android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:gravity="center"
             android:layout_gravity="bottom" />

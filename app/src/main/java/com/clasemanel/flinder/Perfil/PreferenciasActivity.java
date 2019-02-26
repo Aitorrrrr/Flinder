@@ -19,7 +19,6 @@ import com.jakewharton.processphoenix.ProcessPhoenix;
 public class PreferenciasActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button cerrarSesion;
-    private Switch notificaciones;
     private EditText muestrame;
     private FirebaseAuth mAuth;
 
@@ -31,10 +30,6 @@ public class PreferenciasActivity extends AppCompatActivity implements View.OnCl
         cerrarSesion=findViewById(R.id.btn_cerrarSesion_preferencias);
         cerrarSesion.setOnClickListener(this);
 
-        notificaciones=findViewById(R.id.switch_notificaciones_preferencias);
-
-        notificaciones.setOnClickListener(this);
-
         muestrame=findViewById(R.id.et_muestrame_preferencias);
         muestrame.setOnClickListener(this);
     }
@@ -44,10 +39,6 @@ public class PreferenciasActivity extends AppCompatActivity implements View.OnCl
         if (v.getId()==R.id.btn_cerrarSesion_preferencias){
             FirebaseAuth.getInstance().signOut();
             logOut();
-        }
-
-        if (v.getId()==R.id.switch_notificaciones_preferencias){
-            notificaciones();
         }
 
         if (v.getId()==R.id.et_muestrame_preferencias){
@@ -63,18 +54,6 @@ public class PreferenciasActivity extends AppCompatActivity implements View.OnCl
         Toast.makeText(getContext(),getString(R.string.desconectado), Toast.LENGTH_SHORT).show();*/
         Intent i = new Intent(this, MainActivity.class);
         ProcessPhoenix.triggerRebirth(this,i);
-    }
-
-    private void notificaciones(){
-
-        if(notificaciones.isChecked())
-        {
-            Toast.makeText(this,getText(R.string.notificacionesActivadas), Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            Toast.makeText(this,getText(R.string.notificacionesDesactivadas), Toast.LENGTH_SHORT).show();
-        }
     }
 
     public void mostrar() {

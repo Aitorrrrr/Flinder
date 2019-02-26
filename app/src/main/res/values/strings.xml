@@ -54,4 +54,5 @@
     <string name="chatTab">CHAT</string>
     <string name="cartasTab">GENTE</string>
     <string name="perfilTab">PERFIL</string>
+    <string name="enviar">Enviar</string>
 </resources>
