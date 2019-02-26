@@ -43,14 +43,12 @@ public class ChatAdaptador extends RecyclerView.Adapter<ChatAdaptador.ChatPicker
     public static class ChatPickerViewHolder extends android.support.v7.widget.RecyclerView.ViewHolder implements AdapterView.OnClickListener {
 
         public TextView nombre;
-        public TextView ultimMensaje;
         public ImageView imagen;
 
         public ChatPickerViewHolder(@NonNull View itemView) {
             super(itemView);
 
             nombre=(TextView)itemView.findViewById(R.id.lbl_nombre_chatPicker);
-            ultimMensaje = (TextView) itemView.findViewById(R.id.lbl_mensaje_chatPicker);
             imagen = (ImageView) itemView.findViewById(R.id.img_imagenUser_chatPicker);
         }
 

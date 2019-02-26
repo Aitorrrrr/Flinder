@@ -48,9 +48,10 @@ public class MainActivity extends AppCompatActivity implements NavigationHost, V
 
     @Override
     public void iniciliazarTab(TabLayout tl1, final ViewPager v1) {
-        tl1.addTab(tl1.newTab().setText("PERFIL"));
-        tl1.addTab(tl1.newTab().setText("CARTAS"));
-        tl1.addTab(tl1.newTab().setText("CHAT"));
+        tl1.addTab(tl1.newTab().setText(getResources().getString(R.string.perfilTab)));
+        tl1.addTab(tl1.newTab().setText(getResources().getString(R.string.cartasTab)));
+        tl1.addTab(tl1.newTab().setText(getResources().getString(R.string.chatTab)));
+        tl1.setBackgroundColor(getResources().getColor(R.color.azulMedio,null));
         tl1.setTabGravity(tl1.GRAVITY_FILL);
         final ViewPagerAdapter pageAd = new ViewPagerAdapter(getSupportFragmentManager(),tl1.getTabCount());
 

@@ -19,6 +19,7 @@ import com.clasemanel.flinder.LogIn.LoginFragment;
 import com.clasemanel.flinder.NavigationHost;
 import com.clasemanel.flinder.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.jakewharton.processphoenix.ProcessPhoenix;
 
 
 public class Preferencias extends Fragment implements View.OnClickListener {
@@ -89,9 +90,10 @@ public class Preferencias extends Fragment implements View.OnClickListener {
 
 
     private void logOut(){
-        login =new LoginFragment();
+        /*login =new LoginFragment();
         ((NavigationHost) getActivity()).navigateTo(login,false);
-        Toast.makeText(getContext(),getString(R.string.desconectado), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(),getString(R.string.desconectado), Toast.LENGTH_SHORT).show();*/
+        //ProcessPhoenix.triggerRebirth(getContext());
     }
 
     private void notificaciones(){

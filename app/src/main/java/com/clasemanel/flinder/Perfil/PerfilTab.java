@@ -1,6 +1,7 @@
 package com.clasemanel.flinder.Perfil;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -92,14 +93,14 @@ public class PerfilTab extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId()==R.id.btn_ajustes_perfilTab)
         {
-            preferencias = new Preferencias();
-            ((NavigationHost) getActivity()).navigateTo(preferencias,false);
+            Intent i = new Intent(getContext(), PreferenciasActivity.class);
+            startActivity(i);
         }
 
         if (v.getId()==R.id.btn_perfil_perfilTab)
         {
-            editarPerfil = new EditarPerfil();
-            ((NavigationHost) getActivity()).navigateTo(editarPerfil,false);
+            Intent i = new Intent(getContext(), EditarPerfilActivity.class);
+            startActivity(i);
         }
     }
 }

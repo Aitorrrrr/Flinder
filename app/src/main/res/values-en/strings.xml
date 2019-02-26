@@ -8,7 +8,7 @@
     <string name="email">Email Adress</string>
     <string name="contrasenya">Password</string>
     <string name="entrar">Login</string>
-    <string name="crearCuenta">Don\'t have an account? Create new account</string>
+    <string name="crearCuenta">Don\'t have an account yet? Get a new one</string>
     <string name="registro">Register</string>
     <string name="nombreDeUsuario">Username</string>
     <string name="repetirContrasenya">Repeat password</string>
@@ -52,4 +52,7 @@
     <string name="notificacionesActivadas">Notifications Activated</string>
     <string name="notificacionesDesactivadas">Notifications Deactivated</string>
     <string name="desconectado">Disconnected</string>
+    <string name="chatTab">CHAT</string>
+    <string name="cartasTab">PEOPLE</string>
+    <string name="perfilTab">PROFILE</string>
 </resources>

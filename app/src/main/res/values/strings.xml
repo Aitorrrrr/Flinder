@@ -9,7 +9,7 @@
     <string name="email">Correo Electronico</string>
     <string name="contrasenya">Contraseña</string>
     <string name="entrar">Entrar</string>
-    <string name="crearCuenta">¿No tiene una cuenta?, Create una</string>
+    <string name="crearCuenta">¿No tienes una cuenta? ¡Create una!</string>
     <string name="registro">Registro</string>
     <string name="nombreDeUsuario">Nombre de usuario</string>
     <string name="repetirContrasenya">Repetir contraseña</string>
@@ -51,4 +51,7 @@
     <string name="notificacionesActivadas">Notificaciones Activadas</string>
     <string name="notificacionesDesactivadas">Notificaciones Desactivadas</string>
     <string name="desconectado">Desconectado</string>
+    <string name="chatTab">CHAT</string>
+    <string name="cartasTab">GENTE</string>
+    <string name="perfilTab">PERFIL</string>
 </resources>

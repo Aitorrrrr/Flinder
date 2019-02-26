@@ -12,10 +12,10 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-        <ImageView android:src="@drawable/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_marginBottom="24dp"
+        <ImageView android:src="@drawable/logo_flinder"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="6dp"
             android:layout_gravity="center_horizontal" />
 
         <android.support.design.widget.TextInputLayout
@@ -71,8 +71,9 @@
                 android:textColorHint="#fff" />
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.v7.widget.AppCompatButton
+        <android.support.design.button.MaterialButton
             android:id="@+id/btn_entrar_logIn"
+            style="@style/Widget.Flinder.Button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"

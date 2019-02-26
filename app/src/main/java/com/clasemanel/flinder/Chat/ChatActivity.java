@@ -1,6 +1,7 @@
 package com.clasemanel.flinder.Chat;
 
 import android.net.Uri;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -133,6 +134,8 @@ public class ChatActivity extends AppCompatActivity {
                         mensajes.add(0,msgAux);
                     }
 
+                    mensajes = invertirArray(mensajes);
+
                     adaptadorRecycler.setListaChats(mensajes);
                     adaptadorRecycler.notifyDataSetChanged();
                 }
@@ -222,11 +225,23 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
-    public void iniciarRecycler()
+    private void iniciarRecycler()
     {
         rvLM = new LinearLayoutManager(this);
         recycler_Mensajes.setLayoutManager(rvLM);
         adaptadorRecycler = new ChatMessageAdaptador(mensajes, this);
         recycler_Mensajes.setAdapter(adaptadorRecycler);
+    }
+
+    private ArrayList<ChatMessage> invertirArray(ArrayList<ChatMessage> mensajes)
+    {
+        ArrayList<ChatMessage> auxiliar = new ArrayList<ChatMessage>();
+
+        for (int i=mensajes.size()-1; i>=0; i--)
+        {
+            auxiliar.add(mensajes.get(i));
+        }
+
+        return auxiliar;
     }
 }

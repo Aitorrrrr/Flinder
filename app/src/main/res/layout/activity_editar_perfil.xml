@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:textColorHint="#fff"
+        android:textColor="#ffff">
+
+        <EditText
+            android:id="@+id/et_nombre_editarPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nombre"
+            android:inputType="textCapWords"
+            android:textColor="#ffff"
+            android:textColorHint="#fff" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:textColorHint="#fff"
+        android:textColor="#ffff">
+
+        <EditText
+            android:id="@+id/et_apellidos_editarPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/apellidos"
+            android:inputType="textCapWords"
+            android:textColor="#ffff"
+            android:textColorHint="#fff" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:text="@string/localidad"
+        android:textColor="#ffff"
+        android:textColorHint="#fff" />
+
+    <Spinner
+        android:id="@+id/spinner_provincias_editarPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:textAlignment="center"
+        >
+
+    </Spinner>
+
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_guardar_editarPerfil"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="30dp"
+        android:padding="12dp"
+        android:text="@string/guardar" />
+
+
+    <FrameLayout
+        android:id="@+id/frameFotos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+</LinearLayout>
